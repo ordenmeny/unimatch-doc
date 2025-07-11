@@ -12,3 +12,9 @@
 [текст_ссылки](ссылка "текст_подсказки")
 
 `Фрагмент кода` в тексте.
+
+#### Откройте терминал и введите команды:
+```
+> git clone https://github.com/ordenmeny/unimatch-doc.git
+
+> cd unimatch-doc
