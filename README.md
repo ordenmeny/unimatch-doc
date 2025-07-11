@@ -1,40 +1,28 @@
-# Documentation Template created by Diplodoc
+# Документация UniMatch
+### Запустить или обновить локально
 
-Features:
-
-- initial project structure
-- dev server with hot reload
-- codespaces support
-- vscode tutorial via code tours
-
-## Initial project structure
-
-Initiatl project structure with basic content can be found within your public github repo "diplodoc-example/docs" 
-
-## Usage
-
-### Run locally by cloning repo:
+#### Установить [Node.js](https://nodejs.org/uk)
 
 ```
-> git clone git@github.com:diplodoc-platform/documentation-template.git
+> git clone https://github.com/ordenmeny/unimatch-doc.git
 
-> cd documentation-template
+> cd unimatch-doc
 
-> npm start
+> npx -y @diplodoc/cli -i ./docs -o ~/unimatch-docs-dist --output-format html
+> npx http-server ~/unimatch-docs-dist -p 5005
 
-> listening on 0.0.0.0:8000
+> listening on 127.0.0.1:5005
 
 ```
-now you have development server with hot reload runing and serving built documentation on `0.0.0.0:8000`
+Документация будет доступна по адресу http://localhost:5005
 
-### github codespaces
 
-press Use this template -> Open in a codespace
+### Как редактировать документацию
+#### Документация расположена в директории:
+```
+unimatch-doc/docs/ru/...
+```
+Для редактирования — откройте соответствующие .md-файлы внутри этой директории.
+Полный справочник по синтаксису и возможностям YFM (Yandex Flavored Markdown) доступен [по ссылке](https://diplodoc.com/docs/ru/index-yfm).
 
-![open in a codespace](images/open-in-a-codespace.jpeg)
-
-wait for the development server startup
-
-enjoy developing documentation with html result preview in split view
-
-![codespaces project](images/codespaces-project.jpeg)
+Опубликованная документация доступна по [ссылке](https://ordenmeny.github.io/unimatch-doc/)
