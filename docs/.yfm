@@ -3,11 +3,11 @@ allowCustomResources: true
 
 
 langs: ['ru', 'en']
-themes: ['dark']
+themes: ['light']
 
 docs-viewer:
   langs: ['en','ru']
-  themes: ['dark']
+  themes: ['light']
   
 
 resources:
