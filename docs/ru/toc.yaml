@@ -13,3 +13,11 @@ items:
       mode: link
   - name: Новая страница
     href: new_page.md
+
+  # - name: openapi
+  #   include:
+  #     path: openapi
+  #     includers:
+  #       - name: openapi
+  #         input: openapi.yaml
+  #     mode: link

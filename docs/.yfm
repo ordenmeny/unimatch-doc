@@ -1,4 +1,12 @@
+allowHTML: true
+
 langs: ['ru', 'en']
+themes: ['dark']
 
 docs-viewer:
   langs: ['en','ru']
+  themes: ['dark']
+
+resources:
+  style:
+    - _assets/style/custom.css
