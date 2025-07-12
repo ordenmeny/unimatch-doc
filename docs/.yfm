@@ -1,4 +1,6 @@
 allowHTML: true
+allowCustomResources: true
+
 
 langs: ['ru', 'en']
 themes: ['dark']
@@ -6,6 +8,7 @@ themes: ['dark']
 docs-viewer:
   langs: ['en','ru']
   themes: ['dark']
+  
 
 resources:
   style:
