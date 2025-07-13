@@ -1,6 +1,6 @@
 title: Документация UniMatch
 links:
   - title: Обновление документации
-    href: start_doc.md
+    href: section-tutor/tutorial/start_doc.md
   - title: Структура проекта документации
-    href: structure_of_doc.md
+    href: section-tutor/tutorial/structure_of_doc.md
