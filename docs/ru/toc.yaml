@@ -1,19 +1,12 @@
-title: Шаблон проекта документации
+title: Документация UniMatch
 href: index.yaml
-items: 
-  - name: О проекте
-    href: about.md
-  - name: Дополнительная страница
-    href: page.md
-  - name: Другая страница
-    href: anotherpage.md
-  - name: Подраздел
+items:
+  - name: API
+    href: api_doc.md
+  - name: Туториалы по проекту документации
     include:
-      path: sub-section/toc.yaml
+      path: section-tutor/tutor-toc.yaml
       mode: link
-  - name: Новая страница
-    href: new_page.md
-
   # - name: openapi
   #   include:
   #     path: openapi

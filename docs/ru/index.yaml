@@ -1,12 +1,6 @@
-title: Шаблон документации
+title: Документация UniMatch
 links:
-  - title: О проекте
-    href: about.md
-  - title: Страница Diplodoc на главной странице
-    href: page.md
-  - title: Структура YFM на главной странице
-    href: anotherpage.md
-  - title: Подраздел на главной странице
-    href: sub-section/
-  - title: openapi
-    href: openapi/
+  - title: Обновление документации
+    href: start_doc.md
+  - title: Структура проекта документации
+    href: structure_of_doc.md

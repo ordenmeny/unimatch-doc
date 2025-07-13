@@ -1,0 +1,7 @@
+title: Документация
+href: index.yaml
+items:
+  - name: Обновление документации
+    href: tutorial/start_doc.md
+  - name: Структура документации
+    href: tutorial/structure_of_doc.md

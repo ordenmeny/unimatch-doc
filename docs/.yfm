@@ -1,13 +1,10 @@
 allowHTML: true
 allowCustomResources: true
-theme: dark
-
 langs: ['ru', 'en']
-themes: ['dark']
 
 docs-viewer:
   langs: ['en','ru']
-  themes: ['dark']
+  themes: ['dark', 'light']
   
 
 resources:
