@@ -5,8 +5,8 @@ langs: ['ru', 'en']
 docs-viewer:
   langs: ['en','ru']
   themes: ['dark', 'light']
-  
+
 
 resources:
   style:
-    - _assets/style/custom.css
+    - _assets/style/custom.cssa
