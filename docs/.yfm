@@ -9,4 +9,4 @@ docs-viewer:
 
 resources:
   style:
-    - _assets/style/custom.cssa
+    - _assets/style/custom.css
