@@ -5,6 +5,8 @@ items:
     href: api_doc.md
   - name: Запуск Django-проекта
     href: local_django.md
+  - name: Пользовательская система
+    href: users_system.md
   - name: Туториалы по проекту документации
     include:
       path: section-tutor/tutor-toc.yaml
