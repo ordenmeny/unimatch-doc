@@ -7,6 +7,8 @@ items:
     href: local_django.md
   - name: Пользовательская система
     href: users_system.md
+  - name: Яндекс oauth
+    href: yandex_oauth.md
   - name: Туториалы по проекту документации
     include:
       path: section-tutor/tutor-toc.yaml
