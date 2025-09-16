@@ -1,12 +1,39 @@
 # API-документация
 
-### Регистрация
+### **Обработка ошибок с кодом 401 и обновление access токена**
 
+{% note info "" %}
+
+Ошибка с кодом 401 означает, что JWT-токен недействителен, поэтому его требуется обновить.
+
+{% endnote %}
+
+### Сделать запрос на обновление access-токена
+```http
+POST: api/token/refresh/
 ```
+* Если получен новый access токен и код ответа 200 - сохраняем access токен.
+Ответ (статус 200):
+```json
+{
+    "access": "<access_token>",
+}
+```
+* Если код ответа 401 - редирект на страницу входа и вывод сообщения error пользователю.
+Ответ (статус 401):
+```json
+{
+  "error": "Необходимо пройти авторизацию",
+}
+```
+
+### **Регистрация**
+Запрос:
+```http
   POST api/register/
 ```
 
-```http
+```json
 {
   "email": "почта@example.com",
   "first_name": "Имя",
@@ -17,11 +44,15 @@
 }
 ```
 
-Уточнение: [1, 2, 5] - индексы хобби (тэгов)
+{% note info "Уточнение" %}
 
-Response (status 201):
+[1, 2, 5] - индексы хобби (тэгов)
 
-```http
+{% endnote %}
+
+Ответ (статус 201):
+
+```json
   {
     "user": {
         "first_name": "Имя",
@@ -40,86 +71,112 @@ Response (status 201):
                 "name": "Спорт"
             }],
     },
-    "refresh": "<refresh_token>",
     "access": "<access_token>"
 }
 ```
 
-Сохранить access токен на клиенте.
-
-Response (status 400):
-
-```
-{
-    "error": "Пользователь с таким email уже существует."
-}
-```
-
-На клиенте проверить валидность email, first_name, last_name, birth на формат.
-Пароли проверить на равенство.
-
-### Авторизация
-
-```
-  POST api/token/
-```
-
-```http
-  {
-    "email": "user9@yandex.ru",
-    "password": "пароль"
-  }
-```
-
-Response (status 200):
-
-```http
-  {
-    "access": "<access_token>"
-  }
-```
+{% note alert %}
 
 Необходимо сохранить access токен на клиенте.
 
-Ошибка 400:
+{% endnote %}
 
-```http
+Ответ (статус 400) - возможные ошибки:
+
+```json
 {
-    "error": "Неверный email или пароль"
+    "error": "Пользователь с таким email уже существует"
 }
 ```
 
-### Обновление access-токен
-
-Условие, при котором необходимо обновить access-токен:
-если получен ответ с кодом 401 (при доступе к контенту и т.д)
-
-```
-POST: api/token/refresh/
-```
-
-Response (status 200):
-
-```http
+```json
 {
-    "access": "<access_token>",
+    "error": "Введите правильный адрес электронной почты"
 }
 ```
 
-Если ошибка 401, то редирект на страницу с авторизацией.
-
-### Получение текущего пользователя по JWT-токену
-
+```json
+{
+    "error": "Пароль либо слишком простой, либо содержит меньше 4 символов"
+}
 ```
-GET: api/auth/users/me/
+
+```json
+{
+    "error": "Проблема с полем ввода даты рождения"
+}
+```
+
+```json
+{
+    "error": "Произошла непредвиденная ошибка"
+}
+```
+
+{% note info "" %}
+
+Ошибки выводятся по отдельности.
+
+{% endnote %}
+
+{% note alert %}
+
+На клиенте проверить пароли на совпадение и уже только после передавать в запрос.
+
+{% endnote %}
+
+{% note info "Желательно" %}
+
+Проверить валидность email, first_name, last_name, birth на формат.
+
+{% endnote %}
+
+### **Авторизация**
+Запрос:
+```http
+  POST api/token/
+```
+
+```json
+{
+  "email": "user9@yandex.ru",
+  "password": "пароль"
+}
+```
+
+Ответ (статус 200):
+
+```json
+{
+  "access": "<access_token>"
+}
+```
+
+{% note alert %}
+
+Необходимо сохранить access токен на клиенте.
+
+{% endnote %}
+
+Ответ (статус 400):
+
+```http
+{
+  "error": "Неверный email или пароль"
+}
+```
+
+### **Получение текущего пользователя по JWT-токену**
+Запрос:
+```http
+  GET: api/auth/users/me/
 ```
 
 ```http
-Authorization: Bearer <access_token>
+  Authorization: Bearer <access_token>
 ```
 
-Response (200):
-
+Ответ (статус 200):
 ```
 {
     "first_name": "Имя",
@@ -141,46 +198,62 @@ Response (200):
 }
 ```
 
-### Выйти
-
-Отозвать refresh-токен и удалить access-токен на клиенте.
-
-```
-POST: api/token/blacklist/
-```
-
-```
+Ответ (статус 401):
+```json
 {
-    "refresh": "<refresh_token>"
+    "detail": "Given token not valid for any token type",
+    "code": "token_not_valid",
+    "messages": [
+        {
+            "token_class": "AccessToken",
+            "token_type": "access",
+            "message": "Token is expired"
+        }
+    ]
 }
 ```
 
-Response: 200
+### **Выйти**
+{% note alert %}
 
-### Привязка в тг-боту
+Необходимо удалить access токен на клиенте (вне зависимости от ответа бэкэнда) и сделать запрос на backend для отзыва refresh-токена.
 
-```
-POST: api/tg-auth/
-```
+{% endnote %}
 
-Пример использования:
-[Пример](https://github.com/ordenmeny/UniMatch-django-backend/blob/main/users/templates/users/tg_auth.html)
-
-Код успешного ответа: 201.
-
-### Получение истории мэтчей текущего пользователя:
-
-```
-GET: api/pairs/
+Запрос:
+```http
+POST: api/token/blacklist/
 ```
 
-```
-Authorization: Bearer <access_token>
+Ответ (статус 200):
+```json
+{
+  "signout": "Вы вышли из системы"
+}
 ```
 
-Response (status 200):
-
+Ответ (статус 400):
+```json
+{
+  "error": "Не получилось выйти из системы"
+}
 ```
+
+### **Получение истории мэтчей текущего пользователя**
+Запрос:
+```http
+  GET: api/pairs/
+```
+
+```http
+  Authorization: Bearer <access_token>
+```
+
+Ответ (статус 200):
+* current_pair - текущая пара пользователя.
+* pairs - предыдущие пары пользователя.
+
+```json
 {
     "current_pair": {
         "id": 228,
@@ -259,15 +332,15 @@ Response (status 200):
 }
 ```
 
-### Получение списка тэгов
-
+### **Получение списка всех тэгов**
+Запрос:
+```http
+  GET: api/hobby/all/
 ```
-GET: api/hobby/all/
-```
 
-Response (status 200):
+Ответ (статус 200):
 
-```
+```json
 [
     {
         "id": 1,
@@ -288,19 +361,19 @@ Response (status 200):
 ]
 ```
 
-### Получение тэгов пользователя и всех тэгов в одном запросе
-
-```
+### **Получение тэгов пользователя и всех тэгов в одном запросе**
+Запрос:
+```http
 GET: api/hobby/total/
 ```
 
-```
+```http
 Authorization: Bearer <access_token>
 ```
 
-Response (status 200)
+Ответ (статус 200):
 
-```
+```json
 {
     "user_tags": [
         {
@@ -329,15 +402,15 @@ Response (status 200)
 }
 ```
 
-### Дней до мэтча:
-
-```
+### **Дней до мэтча**
+Запрос:
+```http
 GET: api/days-to-match/
 ```
 
-Response (status 200):
+Ответ (статус 200):
 
-```
+```json
 {
     "days_left": 1, // полных дней до
     "hours_left": 13, // полных дней до + полных часов до
@@ -346,19 +419,23 @@ Response (status 200):
 }
 ```
 
-### Обновление данных пользователя (в т.ч хобби)
-
-```
+### **Обновление данных пользователя (в т.ч хобби)**
+Запрос:
+```http
 PATCH api/update/user/
 ```
 
-```
+```http
 Authorization: Bearer <access_token>
 ```
 
-Передаем только те данные, которые были изменены.
+{% note info %}
 
-```
+Можно передать только те данные, которые были изменены.
+
+{% endnote %}
+
+```json
 {
   "first_name": "Дэн",
   "last_name": "Рейнолдс",
@@ -368,9 +445,9 @@ Authorization: Bearer <access_token>
 }
 ```
 
-Response (status 200):
+Ответ (статус 200):
 
-```
+```json
 {
     "id": 59,
     "first_name": "Дэн",
