@@ -125,9 +125,9 @@ POST: api/token/refresh/
 
 {% endnote %}
 
-{% note info "Желательно" %}
+{% note info "Валидация" %}
 
-Проверить валидность email, first_name, last_name, birth на формат.
+Проверить валидность email и password (см.страницу "Валидация полей").
 
 {% endnote %}
 

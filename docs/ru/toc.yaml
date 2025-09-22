@@ -9,6 +9,8 @@ items:
     href: users_system.md
   - name: Яндекс oauth
     href: yandex_oauth.md
+  - name: Валидация полей
+    href: validate_fields.md
   - name: Туториалы по проекту документации
     include:
       path: section-tutor/tutor-toc.yaml
