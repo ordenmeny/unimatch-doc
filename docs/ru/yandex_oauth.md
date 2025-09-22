@@ -106,7 +106,7 @@ response.set_cookie(
 GET: api/access/httponly/
 ```
 
-Response:
+Ответ (статус 200):
 ```json
 {
   "access": <access_token>
@@ -170,7 +170,7 @@ GET: api/auth/users/me/
 Authorization: Bearer <access_token>
 ```
 
-Response:
+Ответ (статус 200):
 ```json
 {
     "first_name": "Имя",
