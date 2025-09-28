@@ -40,7 +40,8 @@ POST: api/token/refresh/
   "last_name": "Фамилия",
   "birth": "2000-01-28",
   "password": "пароль",
-  "hobby": [1, 2, 5]
+  "hobby": [1, 2, 5],
+  "tg_link": "@tg_user"
 }
 ```
 
