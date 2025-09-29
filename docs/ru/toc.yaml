@@ -13,6 +13,8 @@ items:
     href: tg_auth.md
   - name: Валидация полей
     href: validate_fields.md
+  - name: Бэкапы БД
+    href: backup.md
   - name: Туториалы по проекту документации
     include:
       path: section-tutor/tutor-toc.yaml
