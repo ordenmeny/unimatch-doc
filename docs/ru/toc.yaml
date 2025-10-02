@@ -7,6 +7,8 @@ items:
     href: local_django.md
   - name: Пользовательская система
     href: users_system.md
+  - name: Сброс пароля
+    href: email_reset.md
   - name: Яндекс oauth
     href: yandex_oauth.md
   - name: Телеграм auth
@@ -15,6 +17,8 @@ items:
     href: validate_fields.md
   - name: Бэкапы БД
     href: backup.md
+  - name: Запуск на сервере
+    href: start_project.md
   - name: Туториалы по проекту документации
     include:
       path: section-tutor/tutor-toc.yaml
