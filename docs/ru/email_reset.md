@@ -21,12 +21,12 @@ Backnend отправляет письмо со сбросом пароля на
 ```txt
   ...
   Пожалуйста, перейдите на эту страницу и введите новый пароль:
-  https://unimatch.ru/password/reset/confirm/MTM0/c41ddsd5djdjdqnqnd825c9fe575
-  Ваше имя пользователя, если вы забыли: planeairbus380@gmail.com
+  https://unimatch.ru/password-reset/MTM0/c41ddsd5djdjdqnqnd825c9fe575
+  Ваше имя пользователя, если вы забыли: myuseremail@gmail.com
   ...
 ```
 ```txt
-  Шаблон ссылки: password/reset/confirm/<uid>/<token>
+  Шаблон ссылки: password-reset/<uid>/<token>
 ```
 
 ### 3. Пользователь переходит по ссылке и попадает на frontend, где вводит новый пароль.
