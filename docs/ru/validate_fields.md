@@ -31,6 +31,15 @@ function isValidPassword(value) {
   const re = /^(?=.*[A-ZА-Я])(?=.*[a-zа-я])(?=.*\d)(?=.*[!@#\.,\/\$%\^&\*\(\)\\\-\_=\[\]{}:;"'<>\?]).*$/;
   return re.test(value);
 }
+```
+
+### 4 символа и 1 буква, например:
+
+```javascript
+function isValidPassword(value) {
+  const re = /^(?=.*[A-Za-z]).{4,}$/
+  return re.test(value);
+}
 
 console.log(isValidPassword("abc1")); // true
 console.log(isValidPassword("1234")); // false (нет буквы)
