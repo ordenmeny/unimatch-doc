@@ -19,6 +19,8 @@ items:
     href: backup.md
   - name: Запуск на сервере
     href: start_project.md
+  - name: Аналитика
+    href: analitics.md
   - name: Туториалы по проекту документации
     include:
       path: section-tutor/tutor-toc.yaml
