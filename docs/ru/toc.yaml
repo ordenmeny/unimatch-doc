@@ -25,6 +25,10 @@ items:
     include:
       path: section-tutor/tutor-toc.yaml
       mode: link
+  - name: Документация проекта с хакатона
+    include:
+      path: unit_spi/unit_spi.yaml
+      mode: link
   # - name: openapi
   #   include:
   #     path: openapi
