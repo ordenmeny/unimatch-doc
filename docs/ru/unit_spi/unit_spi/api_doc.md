@@ -61,6 +61,19 @@
   POST: api/events/
 ```
 
+{% note info %}
+
+organizer - пользователь, который создал мероприятие.
+joined_users - все пользователи на мероприятие, в т.ч. и организатор.
+
+Необходимо передать access_token в заголовки, явно указывать organizer и joined_users не нужно.
+
+{% endnote %}
+
+```http
+  Authorization: Bearer <access_token>
+```
+
 Тело запроса при POST-запросе:
 ```json
 {
@@ -68,10 +81,7 @@
     "time": "<str>",
     "location": "<str>",
     "description": "<str>",
-    "tags": "<str>",
-    "joined_users": [
-        1
-    ]
+    "tags": "<str>"
 }
 ```
 
@@ -85,23 +95,31 @@
     "description": "<str>",
     "tags": "<str>",
     "joined_users": [
-        1
-    ]
-}
-```
-
-Пример полей:
-```json
-{
-    "id": 4
-    "title": "Концерт Linkin Park",
-    "time": "10 pm",
-    "location": "Лос-Анджелес, hollywood hills",
-    "description": "Концерт рок-группы Linkin Park",
-    "tags": "#Концерты",
-    "joined_users": [
-        1, 2, 3
-    ]
+        {
+            "id": 1,
+            "email": "<str>",
+            "chat_id": <int>,
+            "tg_link": "<str>",
+            "first_name": "<str>",
+            "last_name": "<str>"
+        },
+        {
+            "id": 2,
+            "email": "<str>",
+            "chat_id": <int>,
+            "tg_link": "<str>",
+            "first_name": "<str>",
+            "last_name": "<str>"
+        }
+    ],
+    "organizer": {
+        "id": 1,
+        "email": "<str>",
+        "chat_id": <int>,
+        "tg_link": "<str>",
+        "first_name": "<str>",
+        "last_name": "<str>"
+    }
 }
 ```
 
